@@ -1,0 +1,10 @@
+# nslabs-flame.txt
+
+docker pull ns1labs/flame
+docker run ns1labs/flame --help
+
+# test DNS server under intense load
+docker run --rm ns1labs/flame -p 53 192.168.0.1
+
+# run another terminal and observer server response latency
+watch -n 0.1 dig @192.168.0.1 <host> +noall +stats +noanswer +noquestion

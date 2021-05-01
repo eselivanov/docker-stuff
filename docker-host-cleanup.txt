@@ -1,0 +1,52 @@
+# docker-host-cleanup.txt
+# ref.:
+#   Prune unused Docker objects
+#   https://docs.docker.com/config/pruning/
+
+docker version
+docker info
+
+    docker container ls -a
+    docker container ls -aq
+
+    docker image ls -a
+    docker image la -aq
+
+    # CAUTION ! - remove all stopped containers
+    docker container rm $(docker container ls -aq)
+
+    # CAUTION! - This removes all (-a) images created over the last 24 hours
+    docker image prune -a --filter “until=24h”
+
+
+# --- Prune section ------------
+docker container prune
+
+# remove stopped containers older than 24h 
+docker container prune --filter "until=24h"
+
+docker volume prune
+
+# remove volumes unless they have label "keep"
+docker volume prune --filter "label!=keep"
+
+docker system prune --volumes
+
+WARNING! This will remove:
+        - all stopped containers
+        - all networks not used by at least one container
+        - all volumes not used by at least one container
+        - all dangling images
+        - all build cache
+Are you sure you want to continue? [y/N] y
+
+
+docker system prune --volumes -a
+WARNING! This will remove:
+  - all stopped containers
+  - all networks not used by at least one container
+  - all volumes not used by at least one container
+  - all images without at least one container associated to them
+  - all build cache
+
+Are you sure you want to continue? [y/N] 
