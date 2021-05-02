@@ -2,9 +2,9 @@ ref:
 https://docs.docker.com/network/network-tutorial-standalone/
 https://docs.docker.com/network/bridge/ 
 
-# Change bridge network parameters:
-###note: may need to create daemon.json if
- it doesn't exist
+# Change bridge network parameters:#
+*note: may need to create daemon.json if
+ it doesn't exist*
 
 >sudo nano /etc/docker/daemon.json 
 
@@ -28,9 +28,10 @@ check docker daemon and it parameters
 >sudo systemctl status docker
 
 check new network on the host
-`route` -or- `netstat -rn`
--or `ip a | 'inet '`
+`route` or `netstat -rn`
+or `ip a | 'inet '`
 
-inspect new network
+inspect new network:
+
 >docker network ls
 >docker network inspect bridge
