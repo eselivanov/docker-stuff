@@ -8,7 +8,7 @@
 
 sudo ls -lah /var/run/docker.sock
 
-# is not 666 (rw-rw-rw-) 
+# if not 666 (rw-rw-rw-) 
 sudo chmod 666 /var/run/docker.sock
 
 # Also docker group
